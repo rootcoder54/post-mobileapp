@@ -10,7 +10,8 @@ import {
 import Logo from "../global/Logo";
 import { useRouter } from "expo-router";
 
-const LoginForm = () => {
+const RegisterForm = () => {
+  const [nom, setNom] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -20,12 +21,18 @@ const LoginForm = () => {
   };
 
   const redirect = () => {
-    router.push("register");
+    router.push("login");
   };
 
   return (
     <View style={styles.container}>
       <Logo />
+      <TextInput
+        style={styles.input}
+        value={nom}
+        onChangeText={setNom}
+        placeholder="Nom Complet"
+      />
       <TextInput
         style={styles.input}
         value={login}
@@ -38,11 +45,17 @@ const LoginForm = () => {
         onChangeText={setPassword}
         placeholder="Password"
       />
+      <TextInput
+        style={styles.input}
+        value={password}
+        onChangeText={setPassword}
+        placeholder="Confirme password"
+      />
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Se connecter</Text>
+        <Text style={styles.buttonText}>S' inscrire</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.link} onPress={redirect}>
-        <Text style={styles.buttonlink}>S'inscrire</Text>
+        <Text style={styles.buttonlink}>Se connecter</Text>
       </TouchableOpacity>
     </View>
   );
@@ -94,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginForm;
+export default RegisterForm;
